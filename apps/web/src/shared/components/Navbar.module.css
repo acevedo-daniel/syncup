@@ -1,0 +1,35 @@
+.bar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2);
+  background: linear-gradient(
+    180deg,
+    rgba(20, 22, 27, 0.9),
+    rgba(20, 22, 27, 0.6)
+  );
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(6px);
+}
+.logo {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  background: var(--brand);
+  transition: transform 0.15s ease;
+}
+.logo:focus-visible,
+.logo:hover {
+  outline: none;
+  transform: rotate(-6deg) scale(1.05);
+}
+
+.title {
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+.spacer {
+  flex: 1;
+}

@@ -1,56 +1,57 @@
-# syncup
+# SyncUp
 
-## Estructura de carpetas (monorepo)
+Sistema Mensajería en tiempo real
 
-Este repositorio está organizado como un monorepo usando npm Workspaces. La raíz contiene la configuración y scripts que orquestan los paquetes y aplicaciones.
+## 1. Descripción general
 
-Estructura general:
+Monorepo gestionado con npm Workspaces que aloja una aplicación web en `apps/web`. Alcance funcional y requisitos de negocio: [pendiente].
+
+## 2. Arquitectura
+
+- Orquestación en raíz mediante npm Workspaces (`apps/*`, `packages/*`) y módulos ES (`type: "module"`).
+- Aplicación `apps/web` como SPA basada en React, servida y construida con Vite (desarrollo, build y preview).
+- Scripts de la raíz que delegan en el workspace `apps/web`:
+  - `dev:web` → desarrollo
+  - `build:web` → construcción
+  - `preview:web` → previsualización
+- Paquetes compartidos en `packages/` y recursos de infraestructura en `infra/`: [pendiente].
+- Estructura de código en `apps/web/src`: `app/`, `modules/` (features: `auth/`, `chats/`, `conversation/`, `groups/`), `shared/`, `styles/`, `types/`.
+
+## 3. Tecnologías
+
+- npm Workspaces
+- React `^19.1.1`
+- React DOM `^19.1.1`
+- Vite `^7.1.7`
+- TypeScript `~5.9.3`
+- ESLint `^9.36.0`
+- @vitejs/plugin-react `^5.0.4`
+- @types/node `^24.6.0`
+- @types/react `^19.1.16`
+- @types/react-dom `^19.1.9`
+- eslint-plugin-react-hooks `^5.2.0`
+- eslint-plugin-react-refresh `^0.4.22`
+- @eslint/js `^9.36.0`
+- globals `^16.4.0`
+
+## 6. Estructura de carpetas
 
 ```
-apps/       # Aplicaciones ejecutables (por ejemplo, frontend web)
-packages/   # Paquetes reutilizables (librerías, SDKs, UI kits, utilidades)
-infra/      # Infraestructura y automatización (IaC, CI/CD, scripts de devops)
-```
+syncup/
+├─ apps/
+│  └─ web/
+│     └─ src/
+│        ├─ app/
+│        ├─ modules/
+│        │  ├─ auth/
+│        │  ├─ chats/        # components/, pages/, data/, types.ts, index.ts
+│        │  ├─ conversation/
+│        │  └─ groups/
+│        ├─ shared/
+│        ├─ styles/
+│        └─ types/
+├─ packages/        # Paquetes compartidos [pendiente]
+└─ infra/           # Infraestructura/automatización [pendiente]
 
-- La raíz define los workspaces: `apps/*` y `packages/*`.
-- Cada workspace gestiona sus dependencias locales y puede ser referenciado por otros mediante `workspace:` o importaciones relativas, según corresponda.
 
-## Workspaces y scripts
-
-Este monorepo usa npm como gestor y define scripts en la raíz para facilitar tareas comunes sobre el workspace `apps/web`.
-
-Workspaces declarados en `package.json` (raíz):
-
-```json
-{
-  "workspaces": ["apps/*", "packages/*"]
-}
-```
-
-Scripts disponibles (desde la raíz):
-
-- `dev:web`: inicia el servidor de desarrollo de `apps/web`.
-- `build:web`: genera el build de producción de `apps/web`.
-- `preview:web`: sirve en modo preview el build de `apps/web` (cuando la herramienta lo soporta).
-
-Cómo ejecutarlos en PowerShell (Windows):
-
-```powershell
-# Desarrollo local (hot reload)
-npm run dev:web
-
-# Build de producción
-npm run build:web
-
-# Preview del build (útil para validar producción localmente)
-npm run preview:web
-```
-
-Notas:
-
-- Los scripts de la raíz delegan en el workspace `apps/web` equivalente a ejecutar: `npm --workspace apps/web run <script>`.
-- Asegúrate de tener Node.js y npm instalados. Si es la primera vez, instala dependencias en la raíz:
-
-```powershell
-npm install
 ```

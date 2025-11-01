@@ -1,0 +1,32 @@
+.wrap {
+  display: grid;
+  gap: var(--space-2);
+}
+.head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 16px;
+  background: #222;
+  object-fit: cover;
+}
+.title {
+  margin: 0;
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+.desc {
+  margin: 0;
+  color: var(--muted);
+}
+.back {
+  all: unset;
+  cursor: pointer;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-1);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
